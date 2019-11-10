@@ -22,7 +22,7 @@ public class CrearModulos{
 
 
 
-		// Crear la configuraci髇 cog韊ndola del xml y a馻diendo la clase Categorias
+		// Crear la configuraci贸n cog铆endola del xml y a帽adiendo las clases
 
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
 
@@ -32,17 +32,17 @@ public class CrearModulos{
 
 				.applySettings(configuration.getProperties());
 
-		// Crear la factor韆 de sesiones
+		// Crear la factor铆a de sesiones
 
 		SessionFactory factory = configuration.buildSessionFactory(builder.build());
 
-		// Crear la sesi髇
+		// Crear la sesi贸n
 
 		Session session = factory.getCurrentSession();
 
 		try {
 
-			// Iniciar transacci髇
+			// Iniciar transacci贸n
 			session.beginTransaction();
 			
 			Modulos mod1 = new Modulos("Phyton");
@@ -55,7 +55,7 @@ public class CrearModulos{
 			prof2.addModulos(mod2);
 			session.save(mod2);
 
-			// commit de la transacci髇
+			// commit de la transacci贸n
 			session.getTransaction().commit();
 
 
