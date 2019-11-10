@@ -22,7 +22,7 @@ public class LeerAlumnos {
 
 	public static void main(String[] args) {
 
-		// Crear la configuraci髇 cog韊ndola del xml y a馻diendo la clase Categorias
+		// Crear la configuraci贸n cog铆endola del xml y a帽adiendo las clases
 
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml")
 
@@ -36,11 +36,11 @@ public class LeerAlumnos {
 
 				.applySettings(configuration.getProperties());
 
-		// Crear la factor韆 de sesiones
+		// Crear la factor铆a de sesiones
 
 		SessionFactory factory = configuration.buildSessionFactory(builder.build());
 
-		// Crear la sesi髇
+		// Crear la sesi贸n
 
 		Session session = factory.getCurrentSession();
 
@@ -50,13 +50,13 @@ public class LeerAlumnos {
 
 
 
-			// Iniciar transacci髇
+			// Iniciar transacci贸n
 
 			session.beginTransaction();
 
 
 
-			// Leemos un producto
+			// Leemos alumnos
 
 
 
@@ -68,7 +68,7 @@ public class LeerAlumnos {
 
 			
 
-			// commit de la transacci髇
+			// commit de la transacci贸n
 
 			session.getTransaction().commit();
 
