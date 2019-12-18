@@ -31,7 +31,7 @@ import com.proyectojava.mavenblog.services.KeywordService;
 					Blogentry.class).setParameter("idblogentry", idblogentry).list();
 			return blogentry;
 		}
-		
+		/* HQL
 		public List<Blogentry> getBlogentrys(String palabra) {
 			Session miSesion = sessionFactory.getCurrentSession();
 			List<Blogentry> blogentry=			
@@ -43,13 +43,14 @@ import com.proyectojava.mavenblog.services.KeywordService;
 					Blogentry.class).setParameter("palabra", palabra).list();
 			return blogentry;
 		}
-		/*
+		*/
+		/*CON STORE PROCEDURE*/
 		public List<Blogentry> getBlogentrys(String palabra) {
 			Session miSesion = sessionFactory.getCurrentSession();
 			List<Blogentry> blogentry=			
 					miSesion.createSQLQuery("CALL busqueda(:palabra)").addEntity(Blogentry.class).setParameter("palabra", palabra).list();
 			return blogentry;
-		}*/
+		}
 			
 	    @Override
 		public void save(Blogentry blogentry) {
