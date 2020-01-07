@@ -50,22 +50,28 @@ public class AdminController {
 		return "blogentry_form";
 	}
 
-	@PostMapping("/saveblogentry")
+		/*@PostMapping("/saveblogentry")
 	public String saveBlogentry(@ModelAttribute("blogentry") Blogentry blogentry) {
 
 		blogentryService.save(blogentry);
 		return "redirect:/";
-	}
+	}*/
 	
-/*	@PostMapping("/saveblogentry")
-	public String saveBlogentry(@RequestParam("keywords")String[] keywords,@ModelAttribute("blogentry") Blogentry blogentry) {
-		System.out.println(Arrays.toString(keywords));
-		
+	@PostMapping("/saveblogentry")
+	public String saveBlogentry(@RequestParam("keywords") Optional<String[]> keywords,@ModelAttribute("blogentry") Blogentry blogentry) {		
+		if (keywords.isPresent()) {
+			System.out.println(Arrays.toString(keywords.get()));
+			Keyword k;
+			for (String id : keywords.get()) {
+			k = keywordService.getKeyword(Integer.parseInt(id));
+			blogentry.addKeyword(k);
+			}
+			}
 		
 		blogentryService.save(blogentry);
 		return "redirect:/";
 	}
-	*/
+	
 	
 	@PostMapping("/doupload")
 	public String doUpload(@ModelAttribute("blogentry") Blogentry blogentry) {
